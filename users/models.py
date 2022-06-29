@@ -1,6 +1,7 @@
 from distutils.command.upload import upload
 from email.policy import default
 from django.db import models
+from django.contrib.auth.models import User
 
 
 import uuid
@@ -38,9 +39,3 @@ class Skill(models.Model):
 
     def __str__(self):
         return str(self.name)
-
-
-
-
-# post_save.connect(create_profile, sender=Profile)
-# post_delete.connect(deleteUser, sender=Profile)

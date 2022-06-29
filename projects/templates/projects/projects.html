@@ -1,14 +1,19 @@
 {% extends 'main.html' %}
 
+{% load i18n %}
+
 {% block content %}
 
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+</head>
 
-  <!-- Main Section -->
 <main class="projects">
     <section class="hero-section text-center">
       <div class="container container--narrow">
         <div class="hero-section__box">
-          <h2>Search for <span>Projects</span></h2>
+          <h2>Знайти <span>проєкт</span></h2>
         </div>
 
         <div class="hero-section__search">
@@ -35,7 +40,6 @@
                 <img class="project__thumbnail" src="{{project.featured_image.url}}" alt="project thumbnail" />
                 <div class="card__body">
                   <h3 class="project__title">{{project.title}}</h3>
-                  <p><a class="project__author" href="{% url 'project' project.id %}">{{project.owner.name}}</a></p>
                   <p class="project--rating">
                     <span style="font-weight: bold;">{{project.vote_ratio}}%</span> Postitive
                     Feedback ({{project.vote_total}} Vote{{project.vote_total|pluralize:"s"}})

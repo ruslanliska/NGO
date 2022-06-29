@@ -5,7 +5,7 @@
 <header class="header">
     <div class="container container--narrow">
       <a href="{% url 'profiles' %}" class="header__logo">
-        <img src="{% static 'images/logo.svg' %}" alt="NGO Logo" />
+        <img src="{% static 'images/ngo.jpeg' %}" alt="NGO Logo"/>
       </a>
       <nav class="header__nav">
         <input type="checkbox" id="responsive-menu" />
@@ -15,10 +15,10 @@
         </label>
         <ul class="header__menu">
           <li class="header__menuItem"><a href="{% url 'profiles' %}">Користувачі</a></li>
-          <li class="header__menuItem"><a href="{% url 'projects' %}">Projects</a></li>
-          <li class="header__menuItem"><a href="">Inbox</a></li> 
-          <li class="header__menuItem"><a href="{% url 'create-project' %}">Add Project</a></li>
-          <li class="header__menuItem"><a href="" class="btn btn--sub">Login/Sign Up</a></li>
+          <li class="header__menuItem"><a href="{% url 'projects' %}">Проєкти</a></li>
+          <li class="header__menuItem"><a href="">Вхідні</a></li> 
+          <li class="header__menuItem"><a href="{% url 'create-project' %}">Додати проєкт</a></li>
+          <li class="header__menuItem"><a href="" class="btn btn--sub">Логін/Вхід</a></li>
         </ul>
       </nav>
     </div>

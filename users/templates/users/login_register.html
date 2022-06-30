@@ -1,12 +1,92 @@
 {% extends 'main.html' %}
-
+{% load static %}
 {% block content %}
 
-<form action="{% url 'login' %}" method="POST">
-    {% csrf_token  %}
-    <input type="text" name="username" placeholder="Username" />
-    <input type="text" name="password" placeholder="Enter password" />
-    <input type="submit" name="Login" />
-</form>
+
+{% if page == 'register' %}
+
+<body>
+    <div class="auth">
+      <div class="card">
+        <div class="auth__header text-center">
+          <a href="/">
+            <img src="{% static 'images/icon.svg' %}" alt="icon" />
+          </a>
+          <h3>Реєстрація</h3>
+          <p>Створити новий аккаунт</p>
+        </div>
+
+        <form method="POST" action="{% url 'register' %}" class="form auth__form">
+            {% csrf_token  %}
+            <!-- Input:Text -->
+            {% for field in form %}
+          <div class="form__field">
+            <label for="formInput#text">{{field.label}}</label>
+            {{field}}
+          </div>
+          {% endfor %}
+
+
+          <div class="auth__actions">
+            <input class="btn btn--sub btn--lg" type="submit" value="Зареєструватися" />
+          </div>
+        </form>
+        <div class="auth__alternative">
+          <p>Вже є аккаунт?</p>
+          <a href="{% url 'login' %}">Увійти</a>
+        </div>
+      </div>
+    </div>
+  </body>
+
+
+{% else %}
+<div class="auth">
+    <div class="card">
+      <div class="auth__header text-center">
+        <a href="/">
+          <img src="{% static 'images/icon.svg' %}" alt="icon" />
+        </a>
+        <h3>Вхід</h3>
+      </div>
+
+      <form action="{% url 'login' %}" method="POST" class="form auth__form">
+        {% csrf_token  %}
+        <!-- Input:Username -->
+        <div class="form__field">
+          <label for="formInput#text">Нікнейм: </label>
+          <input
+            class="input input--text"
+            id="formInput#text"
+            type="text"
+            name="username"
+            placeholder="Enter your username..."
+          />
+        </div>
+
+        <!-- Input:Password -->
+        <div class="form__field">
+          <label for="formInput#password">Пароль: </label>
+          <input
+            class="input input--password"
+            id="formInput#passowrd"
+            type="password"
+            name="password"
+            placeholder="••••••••"
+          />
+        </div>
+        <div class="auth__actions">
+          <input class="btn btn--sub btn--lg" type="submit" value="Log In" />
+          <a href="forgetpassword.html">Забули пароль?</a>
+        </div>
+      </form>
+      <div class="auth__alternative">
+        <p>Немає аккаунту?</p>
+        <a href="{% url 'register' %}">Реєстрація</a>
+      </div>
+    </div>
+  </div>
+
+{% endif %}
 
 {% endblock content %}

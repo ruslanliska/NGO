@@ -1,4 +1,5 @@
 import email
+from email import message
 import profile
 from pydoc import pager
 from django.contrib.auth import login, authenticate, logout
@@ -39,7 +40,7 @@ def loginUser(request):
 
 def logoutUser(request):
     logout(request)
-    messages.error(request, "User was logouted")
+    messages.info(request, "User was logouted")
     return redirect('login')
 
 
@@ -57,6 +58,7 @@ def registerUser(request):
             messages.success(request, "User account was created")
 
             login(request, user)
+            messages.success("Аккаунт успішно створено")
             return redirect('profiles')
 
         else:

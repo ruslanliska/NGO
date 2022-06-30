@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext, gettext_lazy as _
 from django.contrib.auth import password_validation
+from django.utils.translation import gettext_lazy as _
 
 from .models import Profile
 
@@ -18,7 +19,7 @@ class CustomUserCreationForm(UserCreationForm):
         label='Підтвердження паролю',
         strip=False,
         widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
-        help_text=password_validation.password_validators_help_text_html(),
+        help_text=_('Введіть пароль для підтвердження'),
     )
     class Meta:
         model = User

@@ -10,7 +10,7 @@ class ProjectForm(ModelForm):
         widgets = {
             'tags': forms.CheckboxSelectMultiple(),
         }
-    
+
     def __init__(self, *args, **kwargs):
         super(ProjectForm, self).__init__(*args, **kwargs)
 

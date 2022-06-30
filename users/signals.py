@@ -10,18 +10,17 @@ def create_profile(sender, instance, created, **kwargs):
     if created:
         user = instance
         profile = Profile.objects.create(
-            user=user, 
-            username=user.username, 
+            user=user,
+            username=user.username,
             email=user.email,
             name=user.first_name
-        )                         
+        )
 
 
 @receiver(post_delete, sender=Profile)
 def deleteUser(sender, instance, **kwargs):
     user = instance.user
     user.delete()
-
 
 # post_save.connect(create_profile, sender=Profile)
 # post_delete.connect(deleteUser, sender=Profile)

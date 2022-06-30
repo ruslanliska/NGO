@@ -1,12 +1,14 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
-
+from django.shortcuts import render, redirect
 
 from .models import Profile
 
 
 def loginUser(request):
+    if request.user.is_authenticated:
+        return redirect('profiles')
+
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -16,7 +18,7 @@ def loginUser(request):
 
         except:
             print("Username does not exists")
-        
+
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
@@ -24,7 +26,6 @@ def loginUser(request):
             return redirect('profiles')
         else:
             print('Username or password is incorrect')
-
 
     return render(request, 'users/login_register.html')
 

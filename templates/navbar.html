@@ -20,7 +20,7 @@
           
 
           {% if request.user.is_authenticated %}
-          <li class="header__menuItem"><a href="{% url 'create-project' %}">Додати проєкт</a></li>
+          <li class="header__menuItem"><a href="{% url 'account' %}">Профіль</a></li>
           <li class="header__menuItem"><a href="{% url 'logout' %}" class="btn btn--sub">Вийти</a></li>
           {% else %}
           <li class="header__menuItem"><a href="{% url 'login' %}" class="btn btn--sub">Логін/Вхід</a></li>

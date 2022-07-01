@@ -19,34 +19,33 @@
               <p class="dev__title">{{ profile.short_intro }}</p>
               <p class="dev__location">{{ profile.location }}</p>
               <ul class="dev__social">
-
                 {% if profile.social_viber %}
                 <li>
-                  <a title="Viber" href="#" target="_blank"><i class="fab fa-viber fa-2x"></i></a>
+                  <a title="Viber" href="{{ profile.social_viber }}" target="_blank"><i class="fab fa-viber fa-2x"></i></a>
                 </li>
                 {% endif %}
 
                 {% if profile.social_telegram %}
                 <li>
-                    <a title="Telegram" style="font-size: 90;" href="#" target="_blank"><i class="fab fa-telegram fa-2x"></i></a>
+                    <a title="Telegram" href="{{ profile.social_telegram }}" target="_blank"><i class="fab fa-telegram fa-2x"></i></a>
                 </li>
                 {% endif %}
 
                 {% if profile.social_instagram %}
                 <li>
-                  <a title="Instagram" href="#" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+                  <a title="Instagram" href="{{ profile.social_instagram }}" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
                 </li>
                 {% endif %}
 
                 {% if profile.social_facebook %}
                 <li>
-                  <a title="Facebook" href="#" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
+                  <a title="Facebook" href="{{ profile.social_facebook }}" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
                 </li>
                 {% endif %}
 
                 {% if profile.social_linkedin %}
                 <li>
-                  <a title="LinkedIn" href="#" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                  <a title="LinkedIn" href="{{ profile.social_linkedin }}" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
                 </li>
                 {% endif %}
               </ul>

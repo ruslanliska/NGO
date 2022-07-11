@@ -17,14 +17,14 @@
         </div>
 
         <div class="hero-section__search">
-          <form class="form" action="#" method="get">
+          <form class="form" action="{% url 'projects' %}" method="get">
             <div class="form__field">
-              <label for="formInput#search">Search By Projects </label>
-              <input class="input input--text" id="formInput#search" type="text" name="text"
-                placeholder="Search by Project Title" />
+              <label for="formInput#search">Введіть назву або тему проєкту</label>
+              <input class="input input--text" id="formInput#search" type="text" name="search_query", value="{{search_query}}"
+                placeholder="Введіть назву або тему проєкту" />
             </div>
 
-            <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+            <input class="btn btn--sub btn--lg" type="submit" value="Пошук" />
           </form>
         </div>
       </div>

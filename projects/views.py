@@ -5,12 +5,13 @@ from django.db.models import Q
 from .forms import ProjectForm
 from .models import Project, Tag
 
-from .utils import search_projects
+from .utils import search_projects, projects_pagination
 
 
 def projects(request):
     projects, search_query = search_projects(request)
-    context = {'projects': projects, 'search_query': search_query}
+    custom_range, projects, paginator = projects_pagination(request, projects, 9)
+    context = {'projects': projects, 'search_query': search_query, 'paginator': paginator, 'custom_range': custom_range}
     return render(request, 'projects/projects.html', context)
 
 

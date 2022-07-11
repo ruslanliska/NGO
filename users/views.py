@@ -13,7 +13,7 @@ from .forms import CustomUserCreationForm, ProfileForm, SkillForm
 
 from .models import Profile
 
-from .utils import search_profiles
+from .utils import search_profiles, profiles_pagination
 
 
 def loginUser(request):
@@ -75,7 +75,8 @@ def registerUser(request):
 
 def profiles(request):
     profiles, search_query = search_profiles(request)
-    contex = {'profiles': profiles, 'search_query': search_query}
+    custom_range, profiles, paginator = profiles_pagination(request, profiles, 9)
+    contex = {'profiles': profiles, 'search_query': search_query, 'paginator': paginator, 'custom_range': custom_range}
     return render(request, 'users/profiles.html', contex)
 
 

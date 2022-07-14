@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.db.models import Q
 
-from .forms import ProjectForm
+from .forms import ProjectForm, ReviewForm
 from .models import Project, Tag
 
 from .utils import search_projects, projects_pagination
@@ -17,7 +17,17 @@ def projects(request):
 
 def project(request, pk):
     projectObj = Project.objects.get(id=pk)
-    context = {'project': projectObj}
+    form = ReviewForm()
+    context = {'project': projectObj, 'form': form}
+
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+        review = form.save(commit=False)
+        review.project = projectObj
+        review.owner = request.user.profile
+        review.save()
+
+
     return render(request, 'projects/single-project.html', context)
 
 
